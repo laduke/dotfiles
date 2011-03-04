@@ -1,3 +1,5 @@
+# stolen from 
+# https://github.com/MrElendig/dotfiles-alice
 #------------------------------------------------------------------#
 # File:     .zshrc   ZSH resource file                             #
 # Version:  0.1.16                                                 #
@@ -17,7 +19,7 @@ SAVEHIST=1000
 export EDITOR="vim"
 export PAGER="vimpager"
 export PATH="${PATH}:${HOME}/bin"
-
+export PATH=$PATH:/usr/local/bin:/opt/java/jre/bin/
 #-----------------------------
 # Dircolors
 #-----------------------------
@@ -50,13 +52,20 @@ bindkey "\e[7~" beginning-of-line
 bindkey "\eOH" beginning-of-line
 bindkey "\eOF" end-of-line
 
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
+bindkey '' history-incremental-search-backward
+
 #------------------------------
 # Alias stuff
 #------------------------------
 alias ls="ls --color -F"
 alias ll="ls --color -lh"
+alias la='ls --color -a'
 alias spm="sudo pacman"
-alias spmc="sudo pacman-color"
+alias tunnel='ssh -ND 4711 -v travis@laduke.dyndns.org -p 5987'
+alias laduke='ssh -p 5987 -t travis@laduke.dyndns.org '
+alias ltorrent='scp -P 5987 *.torrent travis@ltv:/home/share/media/torrents/watch;rm *.torrent'
 
 #------------------------------
 # Comp stuff
